@@ -1,9 +1,9 @@
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context'
 import * as router from 'next/navigation'
 
-import { useAuthCheck } from '@/features/auth/hooks/useAuthCheck'
 import { RolesEnum } from '@/constants/roles.enum'
 import { IRouteMenu } from '@/constants/routes'
+import { useAuthCheck } from '@/features/auth/hooks/useAuthCheck'
 import { renderReduxHook } from '@/test-utils/renderReduxHook'
 
 const useRouterMock = jest.spyOn(router, 'useRouter')

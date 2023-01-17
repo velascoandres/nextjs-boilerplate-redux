@@ -9,7 +9,8 @@
     "lint": "next lint",
     "lint-fix": "next lint --fix",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.7",
@@ -54,6 +55,7 @@
     "postcss-import": "^15.1.0",
     "postcss-nesting": "^10.2.0",
     "sass": "^1.57.1",
-    "tailwindcss": "^3.2.4"
+    "tailwindcss": "^3.2.4",
+    "husky": "^8.0.0"
   }
 }
