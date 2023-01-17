@@ -1,0 +1,13 @@
+.user-menu {
+    .user-button {
+        @apply bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white;
+    }
+
+    .profile-menu {
+        @apply origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none;
+
+        .profile-action {
+            @apply block px-4 py-2 text-sm text-gray-700 hover:bg-gray-700 hover:text-white cursor-pointer;
+        }
+    }
+}

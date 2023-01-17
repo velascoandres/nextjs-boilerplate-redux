@@ -1,0 +1,47 @@
+.text-field {
+    @apply flex flex-col gap-1;
+
+    .label-text{
+        @apply block text-sm font-medium text-gray-700;
+    }
+
+    .input-wrapper {
+        @apply relative mt-1 rounded-md shadow-sm;
+
+        .input {
+            @apply block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm;
+    
+            &.right-adornment {
+                @apply pr-8;
+            }
+    
+            &.left-adornment {
+                @apply pl-8;
+            }
+        }
+    }
+
+    .input-error{
+        @apply border border-red-500;
+
+        &.input-wrapper .input {
+            @apply focus:border-red-500 focus:ring-red-500;
+        }
+    }
+
+    .error-text {
+        @apply text-sm text-red-500 self-end;
+    }
+
+    .input-success{
+        @apply border border-green-600;
+
+        &.input-wrapper .input {
+            @apply focus:border-green-600 focus:ring-green-600;
+        }
+    }
+
+    .success-text {
+        @apply text-sm text-green-600 self-end;
+    }
+}   

@@ -1,0 +1,15 @@
+.input-adornment {
+  @apply pointer-events-none absolute inset-y-0 flex items-center;
+
+  &.adornment-start {
+    @apply pl-2 left-0;
+  }
+
+  &.adornment-end {
+    @apply pr-2 right-0;
+  }
+
+  .adornment-child {
+    @apply text-gray-500 sm:text-sm;
+  }
+}

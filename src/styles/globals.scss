@@ -1,0 +1,28 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "./components/navbar";
+@import "./components/sidebar";
+@import "./components/navLink";
+@import "./components/userMenu";
+@import "./components/button";
+@import "./components/textField";
+@import "./components/inputAdornment";
+@import "./components/avatar";
+@import "./components/dialog";
+
+@import "./layouts/baseLayout";
+@import "./layouts/navigationLayout";
+
+@import "./recipients/modalRecipient";
+
+
+@layer base {
+    @import "./fonts/poppins";
+}
+
+
+html{
+    font-family: 'Poppins';
+}

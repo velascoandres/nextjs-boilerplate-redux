@@ -5,9 +5,11 @@ type Data = {
   name: string
 }
 
+const OK = 200
+
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  res.status(200).json({ name: 'John Doe' })
+  res.status(OK).json({ name: 'John Doe' })
 }

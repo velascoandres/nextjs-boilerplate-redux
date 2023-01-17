@@ -1,0 +1,15 @@
+.navigation-layout {
+    &.navigation-navbar {
+        @apply block ease-out duration-300;
+
+
+        &.expanded-navbar {
+            @apply ml-48;
+        }
+
+        &.collapsed-navbar {
+            @apply ml-14;
+        }
+    }
+
+}
