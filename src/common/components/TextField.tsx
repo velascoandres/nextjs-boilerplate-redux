@@ -21,20 +21,17 @@ interface ITextFieldProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export const TextField: React.FC<ITextFieldProps> = (props) => {
+export const TextField = React.forwardRef<HTMLInputElement, ITextFieldProps>((props, ref) => {
   const { 
     label,
-    id,
-    name,
     startAdornment,
     endAdornment,
     placeholder,
     type = 'text',
     errorText,
-    valid = true,
+    valid,
     validText,
-    value,
-    onChange
+    ...otherProps
   } = props
 
   const inputClassName = classNames('input', {
@@ -43,8 +40,8 @@ export const TextField: React.FC<ITextFieldProps> = (props) => {
   })
 
   const inputWrapperClassName = classNames('input-wrapper', {
-    'input-success': valid,
-    'input-error': !valid,
+    'input-success': valid === true,
+    'input-error': valid === false,
   })
 
   const renderHelperText = () => {
@@ -72,7 +69,7 @@ export const TextField: React.FC<ITextFieldProps> = (props) => {
     <div className="text-field">
       {label && (
         <label
-          htmlFor={name}
+          htmlFor={otherProps.name}
           className="label-text"
         >
           {label}
@@ -81,17 +78,17 @@ export const TextField: React.FC<ITextFieldProps> = (props) => {
       <div className={inputWrapperClassName}>
         <InputAdornment position="start">{startAdornment}</InputAdornment>
         <input
-          id={id}
+          ref={ref}
           type={type}
-          name={name}
           className={inputClassName}
           placeholder={placeholder}
-          value={value}
-          onChange={onChange}
+          {...otherProps}
         />
         <InputAdornment position="end">{endAdornment}</InputAdornment>
       </div>
       {renderHelperText()}
     </div>
   )
-}
+})
+
+TextField.displayName = 'TextField'

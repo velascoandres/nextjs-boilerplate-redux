@@ -31,14 +31,14 @@ export const ROUTES_MENU: IRouteMenu = {
   },
   about:  {
     title: 'About',
-    pathname: '/dashboard/about',
+    pathname: '/about',
     isPublic: false,
     includeNavigation: true,
     allowedRoles: [RolesEnum.BASE_USER],
   },
   tasks:  {
     title: 'Tasks',
-    pathname: '/dashboard/tasks',
+    pathname: '/tasks',
     isPublic: false,
     includeNavigation: true,
     allowedRoles: [RolesEnum.BASE_USER],
