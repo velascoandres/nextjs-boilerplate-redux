@@ -22,10 +22,8 @@
     }
 
     .input-error{
-        @apply border border-red-500;
-
         &.input-wrapper .input {
-            @apply focus:border-red-500 focus:ring-red-500;
+            @apply focus:border-red-500  border-red-500;
         }
     }
 
@@ -34,10 +32,8 @@
     }
 
     .input-success{
-        @apply border border-green-600;
-
         &.input-wrapper .input {
-            @apply focus:border-green-600 focus:ring-green-600;
+            @apply focus:border-green-600 border-green-600;
         }
     }
 

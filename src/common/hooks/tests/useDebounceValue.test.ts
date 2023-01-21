@@ -11,7 +11,7 @@ const DEBOUNCE_VALUE = 10
 jest.spyOn(global, 'setTimeout')
 
 describe('useDebounceValue tests', () => { 
-  describe('When hook renders', () => { 
+  describe('When hook renders', () => {
     test('should return the initial value', () => {
       const { result } = renderHook(() => useDebounceValue(DEBOUNCE_VALUE))
         

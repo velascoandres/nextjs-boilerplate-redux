@@ -21,8 +21,8 @@ interface ILoginForm{
 }
 
 const schema = yup.object({
-  email: yup.string().required('Email is required').email('Enter a valid email'),
-  password: yup.string().required('Password is required'),
+  email: yup.string().required('🙏 please provide your email address').email('🙃 email is not valid'),
+  password: yup.string().required('🙏 please type your password'),
 }).required()
 
 const ERROR_DELAY = 500
@@ -75,7 +75,7 @@ export default function SignIn() {
               placeholder="Enter your email"
               type="email"
               valid={touchedFields.email ? !Boolean(errors.email?.message) : undefined}
-              validText={!errors.email?.message ? 'Email is valid' : undefined}
+              validText={!errors.email?.message ? 'Email looks nice! 👍' : undefined}
               errorText={errors.email?.message}
               endAdornment={
                 <Icon icon="ic:round-alternate-email" fontSize={20} />
@@ -87,7 +87,7 @@ export default function SignIn() {
               placeholder="Enter your password"
               type="password"
               valid={touchedFields.password ? !Boolean(errors.password?.message) : undefined}
-              validText={!errors.password?.message ? 'Password has been provided' : undefined}
+              validText={!errors.password?.message ? 'Password has been provided! 👍' : undefined}
               errorText={errors.password?.message}
               endAdornment={<Icon icon="mdi:password" fontSize={20} />}
             />
