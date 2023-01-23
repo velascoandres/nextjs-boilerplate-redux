@@ -1,36 +1,57 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { 
-  MOCK_STORE_WITH_CLOSE_MODAL, 
-  MOCK_STORE_WITH_CONFIG, 
-  MOCK_STORE_WITH_EMPTY_MODAL, 
-  MOCK_STORE_WITH_OPEN_MODAL, 
-  MOCK_STORE_WITH_UNKNOWN_MODAL 
-} from '@/mocks/mock-constants/modals'
-import { renderWithRedux } from '@/test-utils/renderWithRedux'
+import { IModalContext } from '@/common/providers/ModalProvider'
+import { renderWithModalContext } from '@/test-utils/renderWithModalContext'
 
 import { ModalRecipient } from '../ModalRecipient'
 
-const MODAL_TEST = () => <div>Some test modal</div>
+const TestModalComponent = () => <div>Some test modal</div>
 
-jest.mock('@/constants/modals', () => ({ MODALS: { MODAL_TEST } }))
+const BASE_MODAL_CONTEXT: Partial<IModalContext> = { 
+  state: { 
+    component: TestModalComponent, 
+    isOpen: true, 
+    modalConfig: {
+      closeOnClickOutside: false,
+      closeOnEscapeKeydown: false,
+    } 
+  }
+}
 
+const EMPTY_MODAL_CONTEXT: Partial<IModalContext> = {
+  state: {
+    isOpen: true,
+    modalConfig: {
+      closeOnClickOutside: false,
+      closeOnEscapeKeydown: false,
+    } 
+  },
+}
+
+const MODAL_CONFIG_WITH_CONFIG: Partial<IModalContext> = {
+  state: {
+    component: TestModalComponent, 
+    isOpen: true,
+    modalConfig: {
+      closeOnClickOutside: false,
+      closeOnEscapeKeydown: true,
+    } 
+  },
+}
 
 describe('<ModalRecipient /> Tests', () => { 
   describe('When component renders', () => { 
-    it('should show a modal', () => {
-      renderWithRedux(<ModalRecipient />, { preloadedState: MOCK_STORE_WITH_OPEN_MODAL })
+    test('should show a modal', () => {
+      renderWithModalContext(<ModalRecipient />, BASE_MODAL_CONTEXT)
 
       expect(screen.getByText('Some test modal')).toBeInTheDocument()
     })
-
-    
   })
 
   describe('When modal is close', () => { 
-    it('should not show the modal is open flag is false', () => {
-      renderWithRedux(<ModalRecipient />, { preloadedState: MOCK_STORE_WITH_CLOSE_MODAL })
+    test('should not show the modal is open flag is false from context', () => {
+      renderWithModalContext(<ModalRecipient />, EMPTY_MODAL_CONTEXT)
     
       expect(screen.queryByText('Some test modal')).not.toBeInTheDocument()
     })
@@ -39,16 +60,8 @@ describe('<ModalRecipient /> Tests', () => {
 
   describe('When modal is open', () => { 
     describe('When modal does not exist', () => { 
-      it('should show modal backdrop only (only one children)', () => {
-        renderWithRedux(<ModalRecipient />, { preloadedState: MOCK_STORE_WITH_UNKNOWN_MODAL })
-        
-        expect(screen.queryByRole('modal-container', { hidden: true })?.childNodes).toHaveLength(1)
-      })
-    })
-    
-    describe('When modal is null', () => { 
-      it('should show modal backdrop only (only one children)', () => {
-        renderWithRedux(<ModalRecipient />, { preloadedState: MOCK_STORE_WITH_EMPTY_MODAL })
+      test('should show modal backdrop only (only one children)', () => {
+        renderWithModalContext(<ModalRecipient />, EMPTY_MODAL_CONTEXT)
         
         expect(screen.queryByRole('modal-container', { hidden: true })?.childNodes).toHaveLength(1)
       })
@@ -56,24 +69,35 @@ describe('<ModalRecipient /> Tests', () => {
   })
 
   describe('When Escape key is pressed', () => { 
-    it('should close the modal if has config from store', async () => {
-      renderWithRedux(<ModalRecipient />, { preloadedState: MOCK_STORE_WITH_CONFIG })
+    const closeModalMock = jest.fn()
+
+    beforeEach(() => jest.clearAllMocks())
+
+    test('should call "closeModal" method if has config from context', async () => {
+
+      renderWithModalContext(<ModalRecipient />, {
+        ...MODAL_CONFIG_WITH_CONFIG,
+        closeModal: closeModalMock,
+      })
             
       expect(screen.getByText('Some test modal')).toBeInTheDocument()
-  
+
       await userEvent.keyboard('{Escape}')
-  
-      expect(screen.queryByText('Some test modal')).not.toBeInTheDocument()
+
+      expect(closeModalMock).toHaveBeenCalled()
     })
 
-    it('should not close the modal if has not config from store', async () => {
-      renderWithRedux(<ModalRecipient />, { preloadedState: MOCK_STORE_WITH_OPEN_MODAL })
+    test('should not call "closeModal" method if has not config from context', async () => {
+      renderWithModalContext(<ModalRecipient />, {
+        ...BASE_MODAL_CONTEXT,
+        closeModal: closeModalMock,
+      })
             
       expect(screen.getByText('Some test modal')).toBeInTheDocument()
   
       await userEvent.keyboard('{Escape}')
     
-      expect(screen.getByText('Some test modal')).toBeInTheDocument()
+      expect(closeModalMock).not.toHaveBeenCalled()
     })
   })
   

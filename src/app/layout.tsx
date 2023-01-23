@@ -1,5 +1,6 @@
 'use client'
 
+import { ModalProvider } from '@/common/providers/ModalProvider'
 import { StoreProvider } from '@/common/providers/StoreProvider'
 
 import '@/styles/globals.scss'
@@ -16,9 +17,11 @@ export default function RootLayout({
       }
       <head />
       <body>
-        <StoreProvider>
-          {children}
-        </StoreProvider>
+        <ModalProvider>
+          <StoreProvider>
+            {children}
+          </StoreProvider>
+        </ModalProvider>
       </body>
     </>
   )

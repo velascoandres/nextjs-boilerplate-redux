@@ -2,56 +2,53 @@ import React, { Fragment } from 'react'
 
 import { Transition } from '@headlessui/react'
 
-import { useModal } from '@/common/hooks/useModal'
-import { MODALS } from '@/constants/modals'
-import { useAppSelector } from '@/store/hooks'
+import { IModalContext, ModalContext } from '@/common/providers/ModalProvider'
 
 export const ModalRecipient = () => {
 
-  const { isOpen, component, componentProps, modalConfig } = useAppSelector(state => state.modals)
+  const { 
+    state,
+    closeModal 
+  } = React.useContext(ModalContext) as IModalContext
 
-  const { closeModal } = useModal()
 
   const renderModal = () => {
+    const { component, componentProps } = state
+
     if (!component) {
       return null
     }
 
-    const ModalComponent = MODALS[component] as React.FC
-
-    if (!ModalComponent) {
-      return null
-    }
-
+    const ModalComponent = component
 
     return <ModalComponent {...componentProps } />
   }
 
   React.useEffect(() => {
-    const handleEscapeKeydown = () => {
-      if (!modalConfig?.closeOnEscapeKeydown) {
+    const hasCloseOnEscapeKeydown = state.modalConfig?.closeOnEscapeKeydown
+
+    const handleKeydown = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') {
+        return 
+      }
+      
+      if (!hasCloseOnEscapeKeydown) {
         return
       }
 
       closeModal()
     }
 
-    const handleKeydown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        handleEscapeKeydown()
-      }
-    }
-
     document.addEventListener('keydown', handleKeydown)
 
     return () => {
-      document.removeEventListener('keydown', handleEscapeKeydown)
+      document.removeEventListener('keydown', handleKeydown)
     }
 
-  }, [closeModal, modalConfig])
+  }, [closeModal, state])
 
   return (
-    <Transition.Root show={isOpen} as={Fragment}>
+    <Transition.Root show={state.isOpen} as={Fragment}>
       <div className="modal-recipient" role="modal-container">
         <Transition.Child
           as={Fragment}

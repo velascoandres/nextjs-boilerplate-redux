@@ -2,13 +2,14 @@
 
 import { Button } from '@/common/components/Button'
 import { useModal } from '@/common/hooks/useModal'
+import { AlertModal } from '@/common/modals/AlertModal'
 
 export default function Dashboard() {
   const { openModal } = useModal()
 
   const handleOpenModal = () => {
     openModal({
-      component: 'AlertModal',
+      component: AlertModal,
       props: {
         onSubmit: () => null
       }
@@ -17,7 +18,7 @@ export default function Dashboard() {
   
   const handleOpenConfigModal = () => {
     openModal({
-      component: 'AlertModal',
+      component: AlertModal,
       config: {
         closeOnClickOutside: true,
         closeOnEscapeKeydown: true,

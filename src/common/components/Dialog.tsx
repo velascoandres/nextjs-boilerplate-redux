@@ -40,11 +40,9 @@ interface IDialogActionsProps {
 export const Dialog: React.FC<IDialogContainerProps> & IDialogComposition = (props) => {
 
   const { children, showCloseIcon = true, size = 'sm' } = props as IDialogContainerProps
-  const { closeModal } = useModal()
+  const { closeModal, state: { modalConfig } } = useModal()
   const modalContentRef = React.useRef<HTMLDivElement>(null)
 
-  const { modalConfig } = useAppSelector(state => state.modals)
-  
   useClickOutside(modalContentRef, () => {
     if (!modalConfig?.closeOnClickOutside) {
       return 
