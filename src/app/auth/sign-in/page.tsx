@@ -9,9 +9,9 @@ import { Icon } from '@iconify/react'
 
 import { Button } from '@/common/components/Button'
 import { TextField } from '@/common/components/TextField'
-import { ISetAuthPayload, setAuth } from '@/common/slices/authSlice'
 import { AnimationWrapper } from '@/common/wrappers/AnimationWrapper'
 import { ROUTES_MENU } from '@/constants/routes'
+import { ISetAuthPayload, setAuth } from '@/features/auth/slices/authSlice'
 import { useAppDispatch } from '@/store/hooks'
 
 

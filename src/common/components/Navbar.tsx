@@ -9,9 +9,9 @@ import { Icon } from '@iconify/react'
 
 import { Avatar } from '@/common/components/Avatar'
 import { useClickOutside } from '@/common/hooks/useClickOutside'
-import { logout } from '@/common/slices/authSlice'
 import { hideSidebar, showSidebar } from '@/common/slices/uiSlice'
 import { ROUTES_MENU } from '@/constants/routes'
+import { logout } from '@/features/auth/slices/authSlice'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 
 export const Navbar = () => {

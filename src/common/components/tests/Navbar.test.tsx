@@ -5,7 +5,7 @@ import { } from 'next/navigation'
 import { fireEvent, screen, waitFor } from '@testing-library/react'
 
 import { Navbar } from '@/common/components/Navbar'
-import * as authSlice from '@/common/slices/authSlice'
+import * as authSlice from '@/features/auth/slices/authSlice'
 import { IRootState } from '@/store/store'
 import { renderWithRedux } from '@/test-utils/renderWithRedux'
 

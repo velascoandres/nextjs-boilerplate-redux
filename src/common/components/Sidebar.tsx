@@ -16,6 +16,8 @@ export interface ISidebarContext {
 
 export interface ISidebarProps {
     isHidden?: boolean
+    disableGap?: boolean
+    className?: string
     children: React.ReactNode
 }
 
@@ -27,7 +29,7 @@ export const SidebarContext = React.createContext<ISidebarContext | null>(null)
 
 
 const Sidebar:React.FC<ISidebarProps> & ISidebarComposition = (props) => {
-  const { isHidden, children } = props
+  const { isHidden, children, className = '', disableGap } = props
   const [selectedItemName, setSelectedItemName] = React.useState('')
   const [pathnames, setPathNames] = React.useState<Record<string, string>>({})
 
@@ -50,6 +52,11 @@ const Sidebar:React.FC<ISidebarProps> & ISidebarComposition = (props) => {
   const classNames = classnames('sidebar', {
     'sidebar-visible': !isHidden,
     'sidebar-hidden': isHidden,
+    [className]: true,
+  })
+
+  const navigationListClassNames = classnames('p-2', {
+    'mt-20': !disableGap,
   })
 
   React.useEffect(() => {
@@ -64,7 +71,7 @@ const Sidebar:React.FC<ISidebarProps> & ISidebarComposition = (props) => {
   return (
     <SidebarContext.Provider value={{ isHidden, selectedItemName, selectItem: onSelectItem, registerPathname }}>
       <aside className={classNames}>
-        <ul className="mt-20 p-2">
+        <ul className={navigationListClassNames}>
           {children}
         </ul>
       </aside>
@@ -73,6 +80,5 @@ const Sidebar:React.FC<ISidebarProps> & ISidebarComposition = (props) => {
 }
 
 Sidebar.Item = SidebarItem
-
 
 export { Sidebar }

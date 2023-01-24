@@ -1,6 +1,6 @@
 'use client'
 
-import React, { ButtonHTMLAttributes } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 
 

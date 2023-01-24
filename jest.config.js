@@ -26,7 +26,7 @@ const customJestConfig = {
   },
   testEnvironment: 'jsdom',
   transform: {
-    '^.+\\.(js|jsx|ts|tsx|mjs)$': ['babel-jest', { presets: ['next/babel'] }],
+    '^.+\\.(js|jsx|ts|tsx|mjs)$': ['babel-jest', { presets: ['next/babel', '@babel/preset-typescript'] }],
   },
   transformIgnorePatterns: [
     '/node_modules/',

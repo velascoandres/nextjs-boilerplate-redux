@@ -22,7 +22,7 @@ export type IRoute = IPublicRoute | IRouteWithRoles
 
 export type IRouteMenu = Record<string, IRoute>
 
-export const ROUTES_MENU: IRouteMenu = {
+export const ROUTES_MENU = {
   boilerplate:  {
     title: 'Boilerplate',
     pathname: '/',
@@ -57,6 +57,20 @@ export const ROUTES_MENU: IRouteMenu = {
     includeNavigation: false,
     allowedRoles: [RolesEnum.BASE_USER]
   },
+  changeEmail: {
+    title: 'Change email',
+    pathname: '/profile/change-email',
+    isPublic: false,
+    includeNavigation: false,
+    allowedRoles: [RolesEnum.BASE_USER]
+  },
+  changePassword: {
+    title: 'Change password',
+    pathname: '/profile/change-password',
+    isPublic: false,
+    includeNavigation: false,
+    allowedRoles: [RolesEnum.BASE_USER]
+  },
   admin: {
     title: 'Admin',
     pathname: '/admin',
@@ -79,7 +93,7 @@ export const ROUTES_MENU: IRouteMenu = {
     pathname: '/auth/forgot-password',
     isPublic: true,
   }
-}
+} satisfies IRouteMenu
 
 
 export const ROUTES: IRoute[] = Object.values(ROUTES_MENU)

@@ -2,11 +2,13 @@ import { createSlice, PayloadAction, SliceCaseReducers } from '@reduxjs/toolkit'
 
 import { RolesEnum } from '@/constants/roles.enum'
 
-export interface IUser{
-    id: number
-    firstname: string
-    lastname: string
-    email: string
+import { authApi } from '../api/authApi'
+
+export interface IUser {
+  id: number
+  firstname: string
+  lastname: string
+  email: string
 }
 
 export interface IAuthError {
@@ -15,10 +17,10 @@ export interface IAuthError {
 }
 
 export interface ISetAuthPayload {
-    accessToken: string
-    user: IUser
-  
-    roles?: RolesEnum[]
+  accessToken: string
+  user: IUser
+
+  roles?: RolesEnum[]
 }
 
 export interface ISetErrorPayload {
@@ -26,7 +28,7 @@ export interface ISetErrorPayload {
 }
 
 export interface IAuthState {
-  loading: boolean     
+  loading: boolean
   error: IAuthError | null
   accessToken: string
   user: IUser
@@ -48,7 +50,7 @@ const initialState: IAuthState = {
 }
 
 export const authSlice = createSlice<
-IAuthState,
+  IAuthState,
   SliceCaseReducers<IAuthState>
 >({
   name: 'auth',
@@ -70,6 +72,22 @@ IAuthState,
         id: 0
       }
     },
+  },
+  extraReducers: (builder) => {
+    builder.addMatcher(
+      authApi.endpoints.signIn.matchFulfilled,
+      (state, { payload }) => {
+        state.accessToken = payload.accessToken
+        state.user = payload.user
+      }
+    ),
+    builder.addMatcher(
+      authApi.endpoints.signup.matchFulfilled,
+      (state, { payload }) => {
+        state.accessToken = payload.accessToken
+        state.user = payload.user
+      }
+    )
   },
 })
 

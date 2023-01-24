@@ -8,7 +8,6 @@ import { Icon } from '@iconify/react'
 
 import { useClickOutside } from '@/common/hooks/useClickOutside'
 import { useModal } from '@/common/hooks/useModal'
-import { useAppSelector } from '@/store/hooks'
 
 interface IDialogHeaderProps {
     title: string
