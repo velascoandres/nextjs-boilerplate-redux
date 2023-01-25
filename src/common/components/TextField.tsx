@@ -5,7 +5,7 @@ import classNames from 'classnames'
 
 import { InputAdornment } from '@/common/components/InputAdornment'
 
-interface ITextFieldProps {
+export interface ITextFieldProps {
   id?: string;
   label?: string;
   name?: string;
@@ -82,6 +82,7 @@ export const TextField = React.forwardRef<HTMLInputElement, ITextFieldProps>((pr
           type={type}
           className={inputClassName}
           placeholder={placeholder}
+          role="textbox"
           {...otherProps}
         />
         <InputAdornment position="end">{endAdornment}</InputAdornment>

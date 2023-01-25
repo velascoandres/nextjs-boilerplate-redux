@@ -8,6 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Icon } from '@iconify/react'
 
 import { Button } from '@/common/components/Button'
+import { PasswordField } from '@/common/components/PasswordField'
 import { TextField } from '@/common/components/TextField'
 import { AnimationWrapper } from '@/common/wrappers/AnimationWrapper'
 import { ROUTES_MENU } from '@/constants/routes'
@@ -81,15 +82,13 @@ export default function SignIn() {
                 <Icon icon="ic:round-alternate-email" fontSize={20} />
               }
             />
-            <TextField
+            <PasswordField
               {...register('password')}
               label="Password"
               placeholder="Enter your password"
-              type="password"
               valid={touchedFields.password ? !Boolean(errors.password?.message) : undefined}
               validText={!errors.password?.message ? 'Password has been provided! 👍' : undefined}
               errorText={errors.password?.message}
-              endAdornment={<Icon icon="mdi:password" fontSize={20} />}
             />
   
             <div className="flex flex-col mt-4">
