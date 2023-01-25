@@ -9,6 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Icon } from '@iconify/react'
 
 import { Button } from '@/common/components/Button'
+import { PasswordField } from '@/common/components/PasswordField'
 import { TextField } from '@/common/components/TextField'
 import { AnimationWrapper } from '@/common/wrappers/AnimationWrapper'
 import { ROUTES_MENU } from '@/constants/routes'
@@ -105,25 +106,21 @@ export default function SignUp() {
                 <Icon icon="openmoji:european-name-badge" fontSize={20} />
               }
             />
-            <TextField
+            <PasswordField
               {...register('password')}
               valid={touchedFields.password ? !Boolean(errors.password?.message) : undefined}
               validText={!errors.password?.message ? 'Password looks valid! 👍' : undefined}
               errorText={errors.password?.message}
               label="Password"
               placeholder="Write a password"
-              type="password"
-              endAdornment={<Icon icon="mdi:password" fontSize={20} />}
             />
-            <TextField
+            <PasswordField
               {...register('rePassword')}
               valid={touchedFields.rePassword ? !Boolean(errors.rePassword?.message) : undefined}
               validText={!errors.rePassword?.message ? 'Both passwords are equal! 👍' : undefined}
               errorText={errors.rePassword?.message}
               label="Confirm password"
               placeholder="Confirm the password"
-              type="password"
-              endAdornment={<Icon icon="mdi:password" fontSize={20} />}
             />
   
             <div className="flex flex-col mt-4">
