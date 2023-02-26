@@ -1,7 +1,7 @@
 'use client'
 
-import { ModalProvider } from '@/common/providers/ModalProvider'
-import { StoreProvider } from '@/common/providers/StoreProvider'
+import { ModalProvider } from '@/providers/ModalProvider'
+import { StoreProvider } from '@/providers/StoreProvider'
 
 import '@/styles/globals.scss'
 

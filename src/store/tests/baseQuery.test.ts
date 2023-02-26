@@ -2,11 +2,11 @@
 import { QueryReturnValue } from '@reduxjs/toolkit/dist/query/baseQueryTypes'
 import { BaseQueryApi } from '@reduxjs/toolkit/query'
 
-import { addLoaderItem, removeLoaderItem } from '@/common/slices/loaderSlice'
-import { addNotification, NotificationEnum, removeNotificationsById } from '@/common/slices/notificationSlice'
 import { errorHandlers } from '@/mocks/handlers'
 import { server } from '@/mocks/server'
 import { axiosBaseQuery, IBaseError } from '@/store/baseQuery'
+import { addLoaderItem, removeLoaderItem } from '@/store/slices/loaderSlice'
+import { addNotification, NotificationEnum, removeNotificationsById } from '@/store/slices/notificationSlice'
 import { IRootState } from '@/store/store'
 
 

@@ -4,10 +4,10 @@ import { useRouter } from 'next/navigation'
 
 import { Icon } from '@iconify/react'
 
-import { Button } from '@/common/components/Button'
-import { TextField } from '@/common/components/TextField'
-import { AnimationWrapper } from '@/common/wrappers/AnimationWrapper'
+import { Button } from '@/components/Button'
+import { TextField } from '@/components/TextField'
 import { ROUTES_MENU } from '@/constants/routes'
+import { AnimationWrapper } from '@/wrappers/AnimationWrapper'
 
 export default function ForgotPassword() {
   const router = useRouter()

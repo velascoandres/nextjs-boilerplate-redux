@@ -2,8 +2,8 @@
 
 import classnames from 'classnames'
 
-import { Navbar } from '@/common/components/Navbar'
-import { Sidebar } from '@/common/components/Sidebar'
+import { Navbar } from '@/components/Navbar'
+import { Sidebar } from '@/components/Sidebar'
 import { ROUTES_MENU } from '@/constants/routes'
 import { useAppSelector } from '@/store/hooks'
 

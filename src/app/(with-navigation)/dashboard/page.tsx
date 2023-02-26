@@ -1,8 +1,8 @@
 'use client'
 
-import { Button } from '@/common/components/Button'
-import { useModal } from '@/common/hooks/useModal'
-import { AlertModal } from '@/common/modals/AlertModal'
+import { Button } from '@/components/Button'
+import { useModal } from '@/hooks/useModal'
+import { AlertModal } from '@/modals/AlertModal'
 
 export default function Dashboard() {
   const { openModal } = useModal()

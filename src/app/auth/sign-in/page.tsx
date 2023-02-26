@@ -7,13 +7,13 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Icon } from '@iconify/react'
 
-import { Button } from '@/common/components/Button'
-import { PasswordField } from '@/common/components/PasswordField'
-import { TextField } from '@/common/components/TextField'
-import { AnimationWrapper } from '@/common/wrappers/AnimationWrapper'
+import { Button } from '@/components/Button'
+import { PasswordField } from '@/components/PasswordField'
+import { TextField } from '@/components/TextField'
 import { ROUTES_MENU } from '@/constants/routes'
-import { ISetAuthPayload, setAuth } from '@/features/auth/slices/authSlice'
 import { useAppDispatch } from '@/store/hooks'
+import { ISetAuthPayload, setAuth } from '@/store/slices/authSlice'
+import { AnimationWrapper } from '@/wrappers/AnimationWrapper'
 
 
 interface ILoginForm{

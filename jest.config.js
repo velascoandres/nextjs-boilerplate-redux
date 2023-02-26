@@ -16,7 +16,13 @@ const customJestConfig = {
   testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
   moduleNameMapper: {
     // Handle module aliases (this will be automatically configured for you soon)
-    '^@/common/(.*)$': '<rootDir>/src/common/$1',
+    '^@/components/(.*)$': '<rootDir>/src/components/$1',
+    '^@/modals/(.*)$': '<rootDir>/src/modals/$1',
+    '^@/recipients/(.*)$': '<rootDir>/src/recipients/$1',
+    '^@/hooks/(.*)$': '<rootDir>/src/hooks/$1',
+    '^@/wrappers/(.*)$': '<rootDir>/src/wrappers/$1',
+    '^@/modals/(.*)$': '<rootDir>/src/modals/$1',
+    '^@/providers/(.*)$': '<rootDir>/src/providers/$1',
     '^@/constants/(.*)$': '<rootDir>/src/constants/$1',
     '^@/pages/(.*)$': '<rootDir>/src/pages/$1',
     '^@/features/(.*)$': '<rootDir>/src/features/$1',

@@ -4,9 +4,9 @@ import { useRouter } from 'next/navigation'
 
 import { Icon } from '@iconify/react'
 
-import { Avatar } from '@/common/components/Avatar'
-import { Button } from '@/common/components/Button'
-import { Sidebar } from '@/common/components/Sidebar'
+import { Avatar } from '@/components/Avatar'
+import { Button } from '@/components/Button'
+import { Sidebar } from '@/components/Sidebar'
 import { ROUTES_MENU } from '@/constants/routes'
 
 type ILayoutProps = {

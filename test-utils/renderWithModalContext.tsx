@@ -2,7 +2,7 @@ import React from 'react'
 
 import { render } from '@testing-library/react'
 
-import { IModalContext, ModalContext } from '@/common/providers/ModalProvider'
+import { IModalContext, ModalContext } from '@/providers/ModalProvider'
 
 export const renderWithModalContext = (ui: React.ReactNode, contextValue: Partial<IModalContext> = {}) => {
   const value: IModalContext = {

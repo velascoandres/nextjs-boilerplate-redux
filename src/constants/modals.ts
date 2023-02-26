@@ -1,4 +1,4 @@
-import { AlertModal } from '@/common/modals/AlertModal'
+import { AlertModal } from '@/modals/AlertModal'
 
 export const MODALS = {
   AlertModal,

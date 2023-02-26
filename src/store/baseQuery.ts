@@ -4,13 +4,13 @@ import axios from 'axios'
 import { QueryReturnValue } from '@reduxjs/toolkit/dist/query/baseQueryTypes'
 import type { BaseQueryFn } from '@reduxjs/toolkit/query'
 
-import { addLoaderItem, removeLoaderItem } from '@/common/slices/loaderSlice'
+import { addLoaderItem, removeLoaderItem } from '@/store/slices/loaderSlice'
 import {
   addNotification,
   IRequestNotification,
   NotificationEnum,
   removeNotificationsById
-} from '@/common/slices/notificationSlice'
+} from '@/store/slices/notificationSlice'
 import { IRootState } from '@/store/store'
 
 const NOTIFICATION_DURATION_TIME = 5000

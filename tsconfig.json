@@ -21,7 +21,12 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/common/*": ["src/common/*"],
+      "@/components/*": ["src/components/*"],
+      "@/modals/*": ["src/modals/*"],
+      "@/wrappers/*": ["src/wrappers/*"],
+      "@/recipients/*": ["src/recipients/*"],
+      "@/providers/*": ["src/providers/*"],
+      "@/hooks/*": ["src/hooks/*"],
       "@/constants/*": ["src/constants/*"],
       "@/features/*": ["src/features/*"],
       "@/pages/*": ["src/pages/*"],
